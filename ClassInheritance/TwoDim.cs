@@ -7,7 +7,7 @@ namespace ClassInheritance
         private int[,] arr; //массив
         private float average = 0; //среднее арифметическое
 
-        public TwoDimensionalArray(int row, int column, bool input_mode = false) : base(row, column, input_mode) //возможность заполнения массива пользователем 
+        public TwoDimensionalArray(int row, int column, bool input_mode = false) : base() //возможность заполнения массива пользователем 
         {
             arr = new int[row, column];
             if (input_mode)
@@ -37,7 +37,7 @@ namespace ClassInheritance
             average /= (arr.GetLength(0) * arr.GetLength(1));
         }
 
-        public override void AlternativeInputMethod() //ввод элементов массива построчно через пробел
+        public void AlternativeInputMethod() //ввод элементов массива построчно через пробел
         {
             average = 0;
             Console.WriteLine("Вводите через пробел значения элементов массива по строкам:");

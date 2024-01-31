@@ -14,16 +14,7 @@ class Program
         for (int i = 0; i < test.Length; i++)
         {
             test[i].OutArr();
-            Console.WriteLine($"Среднее значение элементов массива равно {test[i].Average()}");
+            Console.WriteLine($"Среднее значение элементов массива равно {test[i].Average()} \n");
         }
-        // проверка альтернативных методов ввода для каждого вида массива
-        /*for (int i = 0; i < test.Length; i++)
-        {
-            test[i].AlternativeInputMethod();
-            test[i].OutArr();
-        }*/
-        TwoDimensionalArray one = new TwoDimensionalArray(3, 3);
-        one.Det();
-        one.AlternativeInputMethod();
     }
 }

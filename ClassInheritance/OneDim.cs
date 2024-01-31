@@ -7,7 +7,7 @@ namespace ClassInheritance
         private int[] arr; //массив
         private float average = 0; //среднее арифметическое
 
-        public OneDimensionalArray(int size, int column = 0, bool input_mode = false) : base(size, column, input_mode) //возможность заполнения массива пользователем 
+        public OneDimensionalArray(int size, int column = 0, bool input_mode = false) : base() //возможность заполнения массива пользователем 
         {
             arr = new int[size];
             if (input_mode)
@@ -31,7 +31,7 @@ namespace ClassInheritance
             average /= arr.Length;
         }
 
-        public override void AlternativeInputMethod() // публичный метод заполнения массива, удобно использовать при повторном заполнении массива
+        public void AlternativeInputMethod() // публичный метод заполнения массива, удобно использовать при повторном заполнении массива
         {
             Random rnd = new Random();
             average = 0;
