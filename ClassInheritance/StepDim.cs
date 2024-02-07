@@ -12,43 +12,54 @@ namespace ClassInheritance
         {
             arr = new int[row][];
             average_line = new float[row];
-            int count = 0;
             if (input_mode)
             {
-                for (int i = 0; i < arr.Length; i++)
-                {
-                    average_line[i] = 0;
-                    Console.WriteLine($"Введите количество элементов для ступеньки {i}:");
-                    int n = int.Parse(Console.ReadLine());
-                    arr[i] = new int[n];
-                    for (int j = 0; j < arr[i].Length; j++)
-                    {
-                        Console.Write($"Ступенька [{i}], элемент [{j}]: ");
-                        arr[i][j] = int.Parse(Console.ReadLine());
-                        count++;
-                        average += arr[i][j];
-                        average_line[i] += arr[i][j];
-                    }
-                    average_line[i] /= arr[i].Length;
-                }
+                InputUser();
             }
             else
             {
-                Random rnd = new Random();
-                for (int i = 0; i < arr.Length; i++)
+                InputRandom();
+            }
+        }
+
+        private protected override void InputUser()
+        {
+            int count = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                average_line[i] = 0;
+                Console.WriteLine($"Введите количество элементов для ступеньки {i}:");
+                int n = int.Parse(Console.ReadLine());
+                arr[i] = new int[n];
+                for (int j = 0; j < arr[i].Length; j++)
                 {
-                    average_line[i] = 0;
-                    int n = rnd.Next(1, 11);
-                    arr[i] = new int[n];
-                    for (int j = 0; j < arr[i].Length; j++)
-                    {
-                        arr[i][j] = rnd.Next(-20, 21);
-                        count++;
-                        average += arr[i][j];
-                        average_line[i] += arr[i][j];
-                    }
-                    average_line[i] /= arr[i].Length;
+                    Console.Write($"Ступенька [{i}], элемент [{j}]: ");
+                    arr[i][j] = int.Parse(Console.ReadLine());
+                    count++;
+                    average += arr[i][j];
+                    average_line[i] += arr[i][j];
                 }
+                average_line[i] /= arr[i].Length;
+            }
+            average /= count;
+        }
+        private protected override void InputRandom()
+        {
+            int count = 0;
+            Random rnd = new Random();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                average_line[i] = 0;
+                int n = rnd.Next(1, 11);
+                arr[i] = new int[n];
+                for (int j = 0; j < arr[i].Length; j++)
+                {
+                    arr[i][j] = rnd.Next(-20, 21);
+                    count++;
+                    average += arr[i][j];
+                    average_line[i] += arr[i][j];
+                }
+                average_line[i] /= arr[i].Length;
             }
             average /= count;
         }

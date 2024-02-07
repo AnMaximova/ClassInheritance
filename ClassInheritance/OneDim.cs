@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Drawing;
+using System.Runtime.CompilerServices;
 
 namespace ClassInheritance
 {
@@ -10,25 +12,35 @@ namespace ClassInheritance
         public OneDimensionalArray(int size, int column = 0, bool input_mode = false) : base() //возможность заполнения массива пользователем 
         {
             arr = new int[size];
-            if (input_mode)
+            if (input_mode) 
             {
-                for (int i = 0; i < arr.Length; i++)
-                {
-                    Console.Write($"Введите {i} элемент массива: ");
-                    arr[i] = int.Parse(Console.ReadLine());
-                    average += arr[i];
-                }
+                InputUser();
             }
             else
             {
-                Random rnd = new Random();
-                for (int i = 0; i < arr.Length; i++)
-                {
-                    arr[i] = rnd.Next(-200, 201);
-                    average += arr[i];
-                }
+                InputRandom();
             }
             average /= arr.Length;
+        }
+
+        private protected override void InputUser()
+        {
+            
+            for (int i = 0; i < arr.Length; i++)
+            {
+                Console.Write($"Введите {i} элемент массива: ");
+                arr[i] = int.Parse(Console.ReadLine());
+                average += arr[i];
+            }
+        }
+        private protected override void InputRandom()
+        {
+            Random rnd = new Random();
+            for (int i = 0; i < arr.Length; i++)
+            {
+                arr[i] = rnd.Next(-200, 201);
+                average += arr[i];
+            }
         }
 
         public void AlternativeInputMethod() // публичный метод заполнения массива, удобно использовать при повторном заполнении массива

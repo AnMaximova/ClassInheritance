@@ -12,29 +12,38 @@ namespace ClassInheritance
             arr = new int[row, column];
             if (input_mode)
             {
-                for (int i = 0; i < arr.GetLength(0); i++)
-                {
-                    for (int j = 0; j < arr.GetLength(1); j++)
-                    {
-                        Console.Write($"Элемент [{i},{j}]: ");
-                        arr[i, j] = int.Parse(Console.ReadLine());
-                        average += arr[i, j];
-                    }
-                }
+                InputUser();
             }
             else
             {
-                Random rnd = new Random();
-                for (int i = 0; i < arr.GetLength(0); i++)
-                {
-                    for (int j = 0; j < arr.GetLength(1); j++)
-                    {
-                        arr[i, j] = rnd.Next(-200, 201);
-                        average += arr[i, j];
-                    }
-                }
+               InputRandom();
             }
             average /= (arr.GetLength(0) * arr.GetLength(1));
+        }
+
+        private protected override void InputUser() 
+        {
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    Console.Write($"Элемент [{i},{j}]: ");
+                    arr[i, j] = int.Parse(Console.ReadLine());
+                    average += arr[i, j];
+                }
+            }
+        }
+        private protected override void InputRandom() 
+        {
+            Random rnd = new Random();
+            for (int i = 0; i < arr.GetLength(0); i++)
+            {
+                for (int j = 0; j < arr.GetLength(1); j++)
+                {
+                    arr[i, j] = rnd.Next(-200, 201);
+                    average += arr[i, j];
+                }
+            }
         }
 
         public void AlternativeInputMethod() //ввод элементов массива построчно через пробел
