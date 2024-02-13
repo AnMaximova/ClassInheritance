@@ -1,5 +1,4 @@
 ﻿using System;
-
 namespace ClassInheritance
 {
     public sealed class TwoDimensionalArray : HeirArray
@@ -7,22 +6,13 @@ namespace ClassInheritance
         private int[,] arr; //массив
         private float average = 0; //среднее арифметическое
 
-        public TwoDimensionalArray(int row, int column, bool input_mode = false) : base() //возможность заполнения массива пользователем 
-        {
-            arr = new int[row, column];
-            if (input_mode)
-            {
-                InputUser();
-            }
-            else
-            {
-               InputRandom();
-            }
-            average /= (arr.GetLength(0) * arr.GetLength(1));
+        public TwoDimensionalArray(int row, int column = 0, bool input_mode = false) : base(row, column, input_mode)
+        {               
         }
 
-        private protected override void InputUser() 
+        private protected override void InputUser(int row, int column) 
         {
+            arr = new int[row, column];
             for (int i = 0; i < arr.GetLength(0); i++)
             {
                 for (int j = 0; j < arr.GetLength(1); j++)
@@ -32,9 +22,11 @@ namespace ClassInheritance
                     average += arr[i, j];
                 }
             }
+            average /= (arr.GetLength(0) * arr.GetLength(1));
         }
-        private protected override void InputRandom() 
+        private protected override void InputRandom(int row,int column) 
         {
+            arr = new int[row, column];
             Random rnd = new Random();
             for (int i = 0; i < arr.GetLength(0); i++)
             {
@@ -44,6 +36,7 @@ namespace ClassInheritance
                     average += arr[i, j];
                 }
             }
+            average /= (arr.GetLength(0) * arr.GetLength(1));
         }
 
         public void AlternativeInputMethod() //ввод элементов массива построчно через пробел
