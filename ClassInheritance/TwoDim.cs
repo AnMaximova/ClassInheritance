@@ -27,7 +27,7 @@ namespace ClassInheritance
             while (!success || n <= 0);
             return m;
         }
-        internal override void InputUser() 
+        protected override void InputUser() 
         {
             int row;
             int column;
@@ -44,7 +44,7 @@ namespace ClassInheritance
             }
             average /= (arr.GetLength(0) * arr.GetLength(1));
         }
-        internal override void InputRandom() 
+        protected override void InputRandom() 
         {
             int row;
             int column;
