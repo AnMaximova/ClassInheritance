@@ -23,7 +23,7 @@ namespace ClassInheritance
             while (!success || n <= 0);
             return n;
         }
-        private protected override void InputUser()
+        internal override void InputUser()
         {
             int row = VerifiedInput();
             arr = new int[row][];
@@ -47,7 +47,7 @@ namespace ClassInheritance
             }
             average /= count;
         }
-        private protected override void InputRandom()
+       internal override void InputRandom()
         {
             int row = VerifiedInput();
             arr = new int[row][];

@@ -15,8 +15,8 @@ namespace ClassInheritance
                 InputRandom();
             }
         }
-        private protected abstract void InputUser();
-        private protected abstract void InputRandom();
+        internal abstract void InputUser();
+        internal abstract void InputRandom();
         public abstract void OutArr();
         public abstract float Average();
     }

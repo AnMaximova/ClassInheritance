@@ -25,7 +25,7 @@ namespace ClassInheritance
             while (!success || n <= 0);
             return n;
         }
-        private protected override void InputUser()
+        internal override void InputUser()
         {
 
             arr = new int[VerifiedInput()];
@@ -37,7 +37,7 @@ namespace ClassInheritance
             }
             average /= arr.Length;
         }
-        private protected override void InputRandom()
+        internal override void InputRandom()
         {
             arr = new int[VerifiedInput()];
             Random rnd = new Random();
