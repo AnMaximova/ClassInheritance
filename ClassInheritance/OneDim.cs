@@ -9,13 +9,26 @@ namespace ClassInheritance
         private int[] arr; //массив
         private float average = 0; //среднее арифметическое
 
-        public OneDimensionalArray(int row, int column = 0, bool input_mode = false) : base(row, column, input_mode)  
-        { 
+        public OneDimensionalArray(bool input_mode = false) : base(input_mode)  
+        {
         }
 
-        private protected override void InputUser(int row, int column = 0)
+        private int VerifiedInput() //ввод размера массива
         {
-            arr = new int[row];
+            int n;
+            bool success;
+            do
+            {
+                Console.Write("Введите размер массива: ");
+                success = int.TryParse(Console.ReadLine(), out n);
+            }
+            while (!success || n <= 0);
+            return n;
+        }
+        private protected override void InputUser()
+        {
+
+            arr = new int[VerifiedInput()];
             for (int i = 0; i < arr.Length; i++)
             {
                 Console.Write($"Введите {i} элемент массива: ");
@@ -24,9 +37,9 @@ namespace ClassInheritance
             }
             average /= arr.Length;
         }
-        private protected override void InputRandom(int row, int column = 0)
+        private protected override void InputRandom()
         {
-            arr = new int[row];
+            arr = new int[VerifiedInput()];
             Random rnd = new Random();
             for (int i = 0; i < arr.Length; i++)
             {

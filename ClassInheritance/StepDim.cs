@@ -8,12 +8,24 @@ namespace ClassInheritance
         private float average = 0; //среднее арифметическое элементов массива
         private float[] average_line; //массив средних арифметических вложенных массивов
 
-        public StepDimensionalArray(int row, int column = 0, bool input_mode = false) : base(row, column, input_mode) 
+        public StepDimensionalArray(bool input_mode = false) : base(input_mode) 
         {  
         }
-
-        private protected override void InputUser(int row, int column = 0)
+        private int VerifiedInput() //ввод количества ступенек массива
         {
+            int n;
+            bool success;
+            do
+            {
+                Console.Write("Введите колмчество ступенек в массиве: ");
+                success = int.TryParse(Console.ReadLine(), out n);
+            }
+            while (!success || n <= 0);
+            return n;
+        }
+        private protected override void InputUser()
+        {
+            int row = VerifiedInput();
             arr = new int[row][];
             average_line = new float[row];
             int count = 0;
@@ -35,8 +47,9 @@ namespace ClassInheritance
             }
             average /= count;
         }
-        private protected override void InputRandom(int row, int column = 0)
+        private protected override void InputRandom()
         {
+            int row = VerifiedInput();
             arr = new int[row][];
             average_line = new float[row];
             int count = 0;

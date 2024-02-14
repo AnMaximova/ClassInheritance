@@ -6,12 +6,32 @@ namespace ClassInheritance
         private int[,] arr; //массив
         private float average = 0; //среднее арифметическое
 
-        public TwoDimensionalArray(int row, int column = 0, bool input_mode = false) : base(row, column, input_mode)
+        public TwoDimensionalArray(bool input_mode = false) : base(input_mode)
         {               
         }
-
-        private protected override void InputUser(int row, int column) 
+        private int VerifiedInput(out int n) //ввод количества строк и столбцов в двумерном массиве
         {
+            int m;
+            bool success;
+            do
+            {
+                Console.Write("Введите количество строк в матрице: ");
+                success = int.TryParse(Console.ReadLine(), out m);
+            }
+            while (!success || m <= 0);
+            do
+            {
+                Console.Write("Введите количество столбцов в матрице: ");
+                success = int.TryParse(Console.ReadLine(), out n);
+            }
+            while (!success || n <= 0);
+            return m;
+        }
+        private protected override void InputUser() 
+        {
+            int row;
+            int column;
+            row = VerifiedInput(out column);
             arr = new int[row, column];
             for (int i = 0; i < arr.GetLength(0); i++)
             {
@@ -24,8 +44,11 @@ namespace ClassInheritance
             }
             average /= (arr.GetLength(0) * arr.GetLength(1));
         }
-        private protected override void InputRandom(int row,int column) 
+        private protected override void InputRandom() 
         {
+            int row;
+            int column;
+            row = VerifiedInput(out column);
             arr = new int[row, column];
             Random rnd = new Random();
             for (int i = 0; i < arr.GetLength(0); i++)
